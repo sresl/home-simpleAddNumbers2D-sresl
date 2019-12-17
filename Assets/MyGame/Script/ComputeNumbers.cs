@@ -7,41 +7,52 @@ public class ComputeNumbers : MonoBehaviour
 { 
     public TextMeshProUGUI result;
 
-    public TMP_InputField varA;
-    public TMP_InputField varB;
+    public TMP_InputField leftNumber;
+    public TMP_InputField rightNumber;
 
-    public Button btn_reset;
-    public Button btn_add_Numbers;
+    public Button btnReset;
+    public Button btnResult;
+    private const string FinalResult = "Result";
 
 
 public void SetResult()
 {
+
+// Set Result
     result.text = AddNumbers().ToString();
 
-        varA.interactable = false;
-        varB.interactable = false;
+    
+//no interaction with inputfields
+        leftNumber.interactable = false;
+        rightNumber.interactable = false;
 
-            btn_add_Numbers.interactable = false;
-            btn_reset.interactable = true;
+//activate Reset Button
+            btnResult.interactable = false;
+            btnReset.interactable = true;
 }
 
 public void Reset()
 {
-    varA.text = "";
-    varB.text = "";
 
-        varA.interactable = true;
-        varB.interactable = true;
+//Reset both Inputfields back to "Enter a Number" (reset)
+    leftNumber.text = "";
+    rightNumber.text = "";
 
-           btn_add_Numbers.interactable = true;
-           btn_reset.interactable = false;
+//interact with inputfields
+        leftNumber.interactable = true;
+        rightNumber.interactable = true;
 
-    result.text = "Result";
+//activate Buttons
+           btnResult.interactable = true;
+           btnReset.interactable = false;
+
+// Reset Result Text
+    result.text = FinalResult;
 }
 
 private float AddNumbers()
 {
-    float tempResult = float.Parse(varA.text) + float.Parse(varB.text);
+    float tempResult = float.Parse(leftNumber.text) + float.Parse(rightNumber.text);
     
     return tempResult;
 }
